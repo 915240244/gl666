@@ -52,5 +52,11 @@ public class BorrowedServiceImpl implements BorrowedService {
         return count>0;
     }
 
+    @Override
+    public boolean bookremove(Integer book_ID) {
+        boolean b = this.borrowedMapper.bookremove(book_ID);
+        return b;
+    }
+
 
 }

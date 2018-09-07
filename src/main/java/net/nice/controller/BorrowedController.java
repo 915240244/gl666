@@ -82,4 +82,25 @@ public class BorrowedController {
 
         }
     }
+
+    @RequestMapping("huanshu")
+    public String huanshu(@RequestParam("book_ID") int book_ID,HttpSession session){
+        System.out.println("book_ID = " + book_ID);
+        if (Integer.toString(book_ID)==null){
+            return "fail";
+        }else {
+            this.borrowedService.bookremove(book_ID);
+            Book book = borrowedService.BorrowBooke(book_ID);
+            book.setStocks(1);
+            boolean undateStock = borrowedService.undateStock(book);
+            if (undateStock){
+                return "success";
+            }else {
+                return "fails";
+            }
+        }
+
+
+
+    }
 }

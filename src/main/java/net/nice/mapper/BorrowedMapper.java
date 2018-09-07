@@ -12,4 +12,7 @@ public interface BorrowedMapper {
     List<Borrowed> findBorrowed(String reader_ID);
 
     int bookRecord(Borrowed borrowed);
+
+    /*删除还书记录*/
+    boolean bookremove(Integer book_ID);
 }

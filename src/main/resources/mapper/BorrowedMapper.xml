@@ -14,4 +14,8 @@
         #{book_ID},#{reader_ID},#{title},#{borrowed_Time}
         )
     </insert>
+
+    <delete id="bookremove" parameterType="java.lang.Integer">
+        DELETE FROM borrowed_record WHERE Book_ID=#{book_ID}
+    </delete>
 </mapper>

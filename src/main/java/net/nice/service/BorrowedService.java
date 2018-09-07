@@ -15,4 +15,7 @@ public interface BorrowedService {
     boolean undateStock(Book book);
 
     boolean bookRecord(Borrowed borrowed);
+
+    /*删除借书记录*/
+    boolean bookremove(Integer book_ID);
 }

@@ -24,11 +24,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords"
           content="Accessible Profile Widget Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"/>
-    <link rel="stylesheet" type="text/css"
-          href="../css/jqe/themes/default/easyui.css" />
 
     <script type="text/javascript" src="<%=basePath %>js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="<%=basePath %>js/jquery.easyui.min.js"></script>
+  <%--  <script type="text/javascript" src="<%=basePath %>js/jquery.easyui.min.js"></script>--%>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -107,7 +105,7 @@
                 <div class="clear"></div>
                 <div class="button">
 
-                    <button id="tj">还书</button>
+                    <button class="huanshu" lang="${rec.book_ID}">还书</button>
                     <button onclick="location='/asd.do'">返回</button>
                 </div>
             </c:forEach>
@@ -134,6 +132,31 @@
 
 
 <script type="text/javascript">
+
+    $(".huanshu").click(function () {
+
+        var btn = $(this);
+        var url="huanshu.do?book_ID="+$(this).prop("lang");
+        $.ajax({
+            url:url,
+            dataType:'text',
+            type:'post',
+            success:function(data){
+                if(data=="success"){
+                    alert("还书成功");
+                    window.location.href="find.do"}
+                else if(data=="fail"){
+                    alert("没有书籍可还");
+                }   else if(data=="fails"){
+                    alert("还书失败");
+                }
+            }
+        });
+
+    })
+
+
+
 
 
 
