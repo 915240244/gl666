@@ -140,7 +140,7 @@
         $.ajax({
             url:url,
             dataType:'text',
-            type:'post',
+            type:'get',
             success:function(data){
                 if(data=="success"){
                     alert("还书成功");

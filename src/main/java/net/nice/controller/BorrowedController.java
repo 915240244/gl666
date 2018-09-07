@@ -84,6 +84,7 @@ public class BorrowedController {
     }
 
     @RequestMapping("huanshu")
+    @ResponseBody
     public String huanshu(@RequestParam("book_ID") int book_ID,HttpSession session){
         System.out.println("book_ID = " + book_ID);
         if (Integer.toString(book_ID)==null){
