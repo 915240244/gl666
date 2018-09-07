@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.ReaderMapper">
+
+    <insert id="createReader" parameterType="net.nice.bean.Reader">
+        insert into reader_info (reader_ID, reader_Email, reader_Password) VALUES (
+        #{reader_ID},#{reader_Email},#{reader_Password}
+        )
+    </insert>
+
+    <select id="checkExist" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
+        select * FROM reader_info WHERE reader_ID = #{reader_ID}
+    </select>
+
+    <select id="checkLogin" parameterType="net.nice.bean.Reader" resultType="net.nice.bean.Reader">
+        SELECT * FROM reader_info WHERE reader_ID= #{reader_ID} AND reader_Password=#{reader_Password}
+    </select>
+
+        <!--修改用户头像-->
+        <update id="uploadLogo" parameterType="net.nice.bean.Reader">
+            update reader_info set reader_Photo=#{reader_Photo} where reader_ID=#{reader_ID}
+        </update>
+
+
+    <update id="updateReaderInfo" parameterType="java.lang.String">
+        update reader_info SET
+
+                reader_Name=#{reader_Name},
+
+                reader_Phone=#{reader_Phone},
+
+                reader_Gender=#{reader_Gender},
+
+                reader_Email=#{reader_Email},
+
+                reader_Address=#{reader_Address},
+
+                borrow_Count=#{borrow_Count}
+
+                where reader_ID = #{reader_ID}
+
+    </update>
+
+    <select id="ShowUser" parameterType="net.nice.bean.Reader" resultType="net.nice.bean.Reader">
+        SELECT * FROM reader_info WHERE Reader_ID=#{reader_ID}
+    </select>
+
+
+
+    <!--后台管理员部分-->
+
+    <!--读者姓名查询-->
+    <select id="readerList" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
+        select * from reader_info where reader_Name =#{name}
+    </select>
+    <!--读者身份证查询-->
+    <select id="readerId" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
+        select * from reader_info where reader_ID =#{id}
+    </select>
+
+    <select id="getAllReader" resultType="net.nice.bean.Reader">
+        SELECT * FROM reader_info
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.BorrowedMapper">
+<!--    <select id="addBorrowed" resultType="net.nice.bean.Borrowed">
+        SELECT * FROM borrowed_record WHERE reader_ID=#{reader_ID}
+    </select>-->
+    <select id="findBorrowed" resultType="java.lang.Integer">
+        SELECT * FROM borrowed_record WHERE reader_ID=#{reader_ID}
+    </select>
+    <insert id="bookRecord" parameterType="net.nice.bean.Borrowed">
+        insert into borrowed_record (Book_ID,Reader_ID,Title,Reader_Name,Borrowed_Time) VALUES (
+        #{book_ID},#{reader_ID},#{reader_Name},#{borrowed_Time}
+        )
+    </insert>
+</mapper>

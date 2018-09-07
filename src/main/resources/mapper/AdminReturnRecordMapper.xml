@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.AdminReturnMapper">
+    <!--书名查询-->
+    <select id="booname" parameterType="java.lang.String" resultType="net.nice.bean.AdminReturn_record">
+        select * from return_record where Title=#{book}
+
+    </select>
+    <!--名字查询-->
+    <select id="seleectName" parameterType="java.lang.String" resultType="net.nice.bean.AdminReturn_record">
+        select * from return_record where Reader_Name=#{name}
+
+    </select>
+    <!--身份查找-->
+    <select id="selectId" parameterType="java.lang.String" resultType="net.nice.bean.AdminReturn_record">
+        select * from return_record where Staff_Number=#{id}
+
+    </select>
+
+    <!--显示全部记录-->
+        <select id="recordList" resultType="net.nice.bean.AdminReturn_record">
+
+            select * from return_record;
+        </select>
+
+    <insert id="insertInfo" parameterType="net.nice.bean.AdminReturn_record">
+        insert into return_record(Borrowed_ID,Title,Reader_Name,Staff_Number,Staff_Name,Return_Time) values (#{Borrowed_ID},#{Title},#{Reader_Name},#{Staff_Number},#{Staff_Name},#{Return_Time})
+    </insert>
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.BookMapper">
+
+<!--    <select id="findCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM book_info
+    </select>-->
+
+    <select id="allBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info
+    </select>
+
+<!--    <select id="sCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM book_info WHERE (Title LIKE '%${sousuo}%') OR (Author LIKE '%${sousuo}%')
+    </select>-->
+
+    <select id="sBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info WHERE (Title LIKE '%${sousuo}%') OR (Author LIKE '%${sousuo}%')
+    </select>
+
+<!--    <select id="wxCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM book_info WHERE Type_Number='3'
+    </select>-->
+
+    <select id="wxBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info WHERE Type_Number='3'
+    </select>
+
+    <select id="shBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info WHERE Type_Number='1'
+    </select>
+
+    <select id="kjBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info WHERE Type_Number='2'
+    </select>
+
+    <select id="lsBook" resultType="net.nice.bean.Book">
+        SELECT * FROM book_info WHERE Type_Number='4'
+    </select>
+
+
+    <select id="reacherBook" resultType="net.nice.bean.Book">
+    SELECT * FROM  book_info where Title LIKE #{title}
+</select>
+
+    <select id="BorrowBook" resultType="net.nice.bean.Book">
+        SELECT * FROM  book_info where Book_ID= #{book_ID}
+    </select>
+
+    <update id="updateStock" parameterType="net.nice.bean.Book">
+        update book_info set
+         Stocks=#{stocks}
+        where Book_ID= #{book_ID};
+    </update>
+</mapper>

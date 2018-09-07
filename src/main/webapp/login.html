@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+/* 外部大框架 */
+        *{
+            margin: 0px;
+        }
+
+        #heaber{
+            background-color:white;
+            height: 800px;
+        }
+
+/* 头*/
+        #head{
+            height: 35px;
+        }
+
+         #logo{
+              position: relative;
+              left: 53px;
+             top: 0px;
+             height: 35px;
+         }
+
+        #name{
+            position: absolute;
+            top: 0px;
+            left: 300px;
+            height: 35px;
+        }
+
+        #login{
+            position: absolute;
+            top: 0px;
+            left: 550px;
+            height: 35px;
+        }
+
+/* 中间 */
+        #center {
+            position: absolute;
+            top: 80px;
+            left: 100px;
+            background-color: blueviolet;
+            height: 400px;
+            width: 600px;
+        }
+   /* 中间-框*/
+        #center_box{
+            position: absolute;
+            top: 100px;
+            left: 150px;
+            height: 100px;
+            width: 300px;
+        }
+   /*中间-按钮*/
+        #conter_button{
+            position: absolute;
+            top: 200px;
+            left: 400px;
+            height: 90px;
+            width: 100px;
+
+        }
+
+    </style>
+
+    <!-----------------------功能代码-------------------------->
+
+ 	<script>
+ 		//管理员登录
+ 		function adminDenlu() {
+            var user = $("#user").val();
+            var pass = $("#pass").val();
+            var url = "/adminLoin.do";
+            $.ajax({
+                async : false,
+                cache : false,
+                type: 'post',
+                url: url,
+                dataType:"text",
+                data:{
+                    user:user,
+                    pass:pass
+                },
+                success: function (result) {
+
+                    if(result=="no")
+                        $("#hint").html("登录失败");
+                    else if (result=="yse")
+                        window.location.href="bookTz.do";//开始跳转
+                }
+
+            })
+        }
+ 	</script>
+
+</head>
+
+
+<!----------------------------------------页面内容------------------------------>
+
+<body>
+
+<div id="heaber">
+
+
+    <div id="head">   <!-------------------  头------------------->
+
+        <div id="logo">
+         <img src="js/img3/Logo.png" width="160" height="100">
+
+             <div id="name">  <h1>广东图书馆</h1>  </div>
+              <div id="login">  <a href="#">主页</a>     </div>
+
+        </div>
+    </div>
+
+ <hr>
+
+    <div id="center">  <!-- -------------------中间---------------------->
+
+        <div id="center_box">     <!--文本框div-->
+            <font color="white" size="+2">账 号：</font> <input type="text"  id="user" placeholder="请输入账号"> <br>
+            <font color="white" size="+2">密 码：</font>   <input type="password" id="pass"  placeholder="请输入密码"> <br>
+            <spen id="hint"></spen>
+        </div>
+
+         <div id="conter_button">
+             <button onclick="adminDenlu()">单击登录</button>  <!--使用js进行跳转-->
+         </div>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>

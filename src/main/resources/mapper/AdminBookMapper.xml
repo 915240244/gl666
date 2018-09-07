@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--查询书籍表全部-->
+<mapper namespace="net.nice.mapper.AdminBookMapper">
+    <select id="booklist" resultType="net.nice.bean.AdminBook">
+        select * from book_info;
+    </select>
+    <!--书名模糊查询 book_zt.jsp-->
+<select id="bookyg" parameterType="java.lang.String" resultType="net.nice.bean.AdminBook">
+    select * from book_info where Title like CONCAT('%', #{bookName}, '%')
+</select>
+
+
+    <!--书号搜索 book_zt.jsp-->
+    <select id="bookNumber" parameterType="java.lang.String" resultType="net.nice.bean.AdminBook">
+          select * from book_info where Book_ID =#{number};
+    </select>
+
+    <!--在馆数量查询 book_zt.jsp-->
+    <select id="stockeSelect" parameterType="java.lang.Integer" resultType="net.nice.bean.AdminBook">
+        select * from book_info where  Stocks &gt;= #{arg0} and Stocks &lt;=#{arg1};
+    </select>
+
+<!-- 添加书籍 addBook.jsp-->
+    <insert id="intoAbook" parameterType="net.nice.bean.AdminBook" keyProperty="propagationID" useGeneratedKeys="true">
+        insert into book_info (Title,Author,press,location,Type_Number,url,publication_Date,price,Total,Stocks,Synopsis) values (
+        #{Title},#{Author},#{press},#{location},#{Type_Number},#{url},#{publication_Date},#{price},#{Total},
+        #{Stocks},#{Synopsis})
+    </insert>
+
+    <!--修改书籍 upBook.jsp-->
+    <update id="upBook" parameterType="net.nice.bean.AdminBook">
+        update book_info set
+        Title = #{Title},
+        Author = #{Author},
+        press = #{press},
+        location = #{location},
+        Type_Number = #{Type_Number},
+        url = #{url},
+        publication_Date = #{publication_Date},
+        price = #{price},
+        Total = #{Total},
+        Stocks = #{Stocks},
+        Synopsis = #{Synopsis}
+        where Book_ID  = #{Book_ID}
+    </update>
+
+
+<!--删除书籍-->
+<delete id="deleteBook" parameterType="java.lang.String">
+    delete from book_info where Book_ID=#{Book_ID}
+</delete>
+
+
+</mapper>

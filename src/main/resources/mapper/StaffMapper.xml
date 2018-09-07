@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.StaffMapper">
+    <select id="adminLogin" parameterType="net.nice.bean.Staff" resultType="net.nice.bean.Staff">
+        SELECT * FROM staff WHERE staff_Number=#{staff_Number} AND staff_Password=#{staff_Password}
+    </select>
+</mapper>

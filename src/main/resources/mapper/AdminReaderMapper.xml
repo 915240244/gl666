@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.AdminReaderMapper">
+    <!--读者姓名查询-->
+    <select id="readerList" parameterType="java.lang.String" resultType="net.nice.bean.AdminReader_info">
+        select * from reader_info where Reader_Name =#{name}
+    </select>
+    <!--读者身份证查询-->
+    <select id="readerId" parameterType="java.lang.String" resultType="net.nice.bean.AdminReader_info">
+        select * from reader_info where Reader_ID =#{id}
+
+    </select>
+
+    <select id="getAllReader" resultType="net.nice.bean.AdminReader_info">
+
+        SELECT * FROM reader_info
+    </select>
+</mapper>

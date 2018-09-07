@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.nice.mapper.AdminBorrowedMapper">
+
+    <!--显示全部申请用户 -->
+    <select id="record" parameterType="int" resultType="net.nice.bean.AdminBborrowed_record">
+            select * from borrowed_record where Give_Back not in (#{give_Back})
+    </select>
+
+    <!--借阅用户的姓名查询-->
+    <select id="nameSelect" parameterType="java.lang.String" resultType="net.nice.bean.AdminBborrowed_record">
+        select * from borrowed_record where Reader_Name=#{name}
+    </select>
+
+    <!--审核通过 修改状态码-->
+    <update id="upback" parameterType="net.nice.bean.AdminBborrowed_record">
+        UPDATE  borrowed_record
+        set
+        Give_Back =#{Give_Back}
+        where Borrowed_ID =#{Borrowed_ID}
+    </update>
+
+    <!--根据书名查询-->
+
+    <select id="titleSelect" parameterType="java.lang.String" resultType="net.nice.bean.AdminBborrowed_record">
+        select * from borrowed_record where Title=#{name}
+
+    </select>
+
+    <!--根据申请身份证查询-->
+    <select id="readerId" parameterType="java.lang.String" resultType="net.nice.bean.AdminBborrowed_record">
+        select * from
+        borrowed_record  where Reader_ID =#{ID}
+    </select>
+
+    <!--当用户执行归还操作时 产生一条归还记录-->
+    <insert id="returnBook" parameterType="net.nice.bean.AdminReturn_record">
+        insert into return_record (Borrowed_ID,Title,Reader_Name,Staff_Number,Staff_Name,Return_Time)
+        values(
+         #{Borrowed_ID},#{Title},#{Reader_Name},#{Staff_Number},
+         #{Staff_Name},#{Return_Time}
+        )
+
+    </insert>
+
+
+    <update id="updateBack" parameterType="java.lang.Integer">
+        UPDATE borrowed_record SET give_back=0 WHERE borrowed_id=#{borrowed_ID}
+    </update>
+
+</mapper>
