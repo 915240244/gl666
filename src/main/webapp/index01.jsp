@@ -228,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             success:function(data){
                 if(data=="success"){
                     alert("借阅成功");
-                    window.location.href="keji.do"}
+                    window.location.href="index.do"}
                 else if(data=="fail"){
                     alert("已经没有书可借了");
                 }   else if(data=="fails"){
