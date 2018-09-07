@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 public class BorrowedController {
@@ -56,6 +58,19 @@ public class BorrowedController {
             /*      System.out.println("没有书")*/
 
         } else {
+            /*#{book_ID},#{reader_ID},#{title},#{borrowed_Time}*/
+            Borrowed borrowed=new Borrowed();
+            borrowed.setBook_ID(book_ID);
+            borrowed.setReader_ID((String) session.getAttribute("Id"));
+            borrowed.setTitle(book.getTitle());
+            Date date=new Date();
+            Calendar calendar=Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_MONTH,+60);
+            date=calendar.getTime();
+            String sdf = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
+            borrowed.setBorrowed_Time(sdf);
+            this.borrowedService.bookRecord(borrowed);
             book.setStocks(0);
             boolean b=borrowedService.undateStock(book);
             if (b){

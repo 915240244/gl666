@@ -46,7 +46,11 @@ public class BorrowedServiceImpl implements BorrowedService {
         return false;
     }
 
-
+    @Override
+    public boolean bookRecord(Borrowed borrowed) {
+        int count=this.borrowedMapper.bookRecord(borrowed);
+        return count>0;
+    }
 
 
 }

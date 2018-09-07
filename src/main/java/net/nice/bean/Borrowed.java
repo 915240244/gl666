@@ -3,7 +3,7 @@ package net.nice.bean;
 public class Borrowed {
    private Integer propagationID;
    private String borrowed_ID;
-   private String book_ID;
+   private Integer book_ID;
    private String reader_ID;
    private String title;
    private String reader_Name;
@@ -36,11 +36,11 @@ public class Borrowed {
         this.borrowed_ID = borrowed_ID;
     }
 
-    public String getBook_ID() {
+    public Integer getBook_ID() {
         return book_ID;
     }
 
-    public void setBook_ID(String book_ID) {
+    public void setBook_ID(Integer book_ID) {
         this.book_ID = book_ID;
     }
 

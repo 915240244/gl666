@@ -133,7 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div style="margin: auto 4%;margin-top:5px">状态:<c:choose>
                                 <c:when test="${book.stocks==0}">不可借</c:when>
                                 <c:when test="${book.stocks==1}">可借</c:when>
-                            </c:choose> <button class="btnAll" lang="${book.book_ID}" >【查看租用信息】</button></div>
+                            </c:choose> <button class="jkl" lang="${book.book_ID}">点击查询</button></div>
                             <span></span>
                             <p>简介：${book.synopsis}</p>
                         </div>
@@ -211,6 +211,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <script type="text/javascript">
+
+    $(".jkl").click(function () {
+        /*   var btn = $(this);
+           var url="findBook.do?book_ID="+$(this).prop("lang")
+           $.get(url);*/
+        var btn = $(this);
+        var url="findBook.do?book_ID="+$(this).prop("lang");
+        $.ajax({
+            url:url,
+            dataType:'text',
+            type:'post',
+            success:function(data){
+                if(data=="success"){
+                    alert("借阅成功");
+                    window.location.href="keji.do"}
+                else if(data=="fail"){
+                    alert("已经没有书可借了");
+                }   else if(data=="fails"){
+                    alert("出现了出乎意料的错误");
+                }
+            }
+        });
+
+    })
 
 
     function firstPage() {

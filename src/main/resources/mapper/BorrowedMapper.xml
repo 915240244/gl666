@@ -10,8 +10,8 @@
         SELECT * FROM borrowed_record WHERE reader_ID=#{reader_ID}
     </select>
     <insert id="bookRecord" parameterType="net.nice.bean.Borrowed">
-        insert into borrowed_record (Book_ID,Reader_ID,Title,Reader_Name,Borrowed_Time) VALUES (
-        #{book_ID},#{reader_ID},#{reader_Name},#{borrowed_Time}
+        insert into borrowed_record (Book_ID,Reader_ID,Title,Borrowed_Time) VALUES (
+        #{book_ID},#{reader_ID},#{title},#{borrowed_Time}
         )
     </insert>
 </mapper>

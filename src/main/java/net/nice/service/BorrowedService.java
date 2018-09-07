@@ -13,4 +13,6 @@ public interface BorrowedService {
     Book BorrowBooke(int bookID);
 
     boolean undateStock(Book book);
+
+    boolean bookRecord(Borrowed borrowed);
 }
