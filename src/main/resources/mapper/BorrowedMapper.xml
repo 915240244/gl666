@@ -6,7 +6,7 @@
 <!--    <select id="addBorrowed" resultType="net.nice.bean.Borrowed">
         SELECT * FROM borrowed_record WHERE reader_ID=#{reader_ID}
     </select>-->
-    <select id="findBorrowed" resultType="java.lang.Integer">
+    <select id="findBorrowed" resultType="net.nice.bean.Borrowed">
         SELECT * FROM borrowed_record WHERE reader_ID=#{reader_ID}
     </select>
     <insert id="bookRecord" parameterType="net.nice.bean.Borrowed">
