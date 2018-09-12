@@ -152,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div style="margin: auto 4%;margin-top:5px">状态:<c:choose>
                                     <c:when test="${book.stocks==0}">不可借</c:when>
                                     <c:when test="${book.stocks==1}">可借</c:when>
-                                </c:choose> <button class="btnAll" lang="${book.book_ID}" >【查看租用信息】</button></div>
+                                </c:choose> <button class="btnAll" lang="${book.book_ID}" >点击查询</button></div>
                                 <span></span>
                                 <p>简介：${book.synopsis}</p>
                             </div>
@@ -279,6 +279,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     }
 </script>
-
 </body>
 </html>

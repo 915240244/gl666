@@ -214,6 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 
+
 <script type="text/javascript">
     $(".jkl").click(function () {
         /*   var btn = $(this);
