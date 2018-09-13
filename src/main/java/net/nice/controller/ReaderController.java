@@ -149,6 +149,9 @@ public class ReaderController {
 
 
 
+
+
+
             System.out.println("头像上传成功+++++++++++++++++++++++++++++");
         }
         return null;
