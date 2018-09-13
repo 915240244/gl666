@@ -43,7 +43,7 @@ public class ReaderController {
             Reader reader=new Reader(reader_ID,rpassword,reader_Email);
             final boolean rs = this.readerService.createReader(reader);
             if (rs){
-                System.out.println("rs = 登录成功啦 " + rs);
+                System.out.println("rs = 注册成功 " + rs);
                 return "success";
             }
 
@@ -68,6 +68,7 @@ public class ReaderController {
             return "no";
         }else {
             session.setAttribute("reader",login);
+            /*把ID保存到session*/
             session.setAttribute("Id",login.getReader_ID());
             //登录成功
             System.out.println("rs = 登录成功啦-------------- ");
