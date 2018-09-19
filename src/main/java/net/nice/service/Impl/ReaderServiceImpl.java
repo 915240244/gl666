@@ -56,24 +56,4 @@ public class ReaderServiceImpl implements ReaderService {
 
     }
 
-
-    /*后台管理员部分*/
-    @Override
-    public List<Reader> readerList(String name) {
-        List<Reader> readerList = this.readerMapper.readerList(name);
-        return readerList;
-    }
-
-    @Override
-    public Reader readerId(String id) {
-        Reader readerId = this.readerMapper.readerId(id);
-        return readerId;
-    }
-
-    @Override
-    public List<Reader> getAllReader() {
-        List<Reader> allReader = this.readerMapper.getAllReader();
-        return allReader;
-    }
-
 }

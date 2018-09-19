@@ -4,7 +4,6 @@ package net.nice.controller;
 import net.nice.bean.Reader;
 import net.nice.service.ReaderService;
 import net.nice.utils.MD5;
-import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -145,13 +143,6 @@ public class ReaderController {
             if (c==1){
                 session.setAttribute("user",reader);
             }
-
-
-
-
-
-
-
             System.out.println("头像上传成功+++++++++++++++++++++++++++++");
         }
         return null;
@@ -177,45 +168,4 @@ public class ReaderController {
         return "/geren.jsp";
     }
 
-
-
-
-
-
-
-
-
-    /*后台管理员部分*/
-
-    //显示全部读者数据-book_zt.jsp
-    @RequestMapping(value = "reader.do" )
-    @ResponseBody
-    public Object Readerlike(){
-        List<Reader> readerlist = readerService.getAllReader();
-        JSONArray jsonArray = JSONArray.fromObject(readerlist);
-        return jsonArray.toString();
-    }
-
-    //读者姓名查询
-    @RequestMapping("readername.do")
-    @ResponseBody
-    public  String  readerName(@RequestParam("name")String  name){
-
-        List<Reader> readerList = readerService.readerList(name);
-        if (readerList==null) return "";
-
-        JSONArray jsonArray = JSONArray.fromObject(readerList);
-        System.out.println("jsonArray = " + jsonArray);
-        return jsonArray.toString();
-    }
-    //读者身份证查询
-    @RequestMapping("readerID.do")
-    @ResponseBody
-    public  String  readerId(@RequestParam("reader") String readerID ){
-
-        Reader readerId = readerService.readerId(readerID);
-        if (readerId==null) return "";
-        JSONArray jsonArray = JSONArray.fromObject(readerId);
-        return jsonArray.toString();
-    }
 }

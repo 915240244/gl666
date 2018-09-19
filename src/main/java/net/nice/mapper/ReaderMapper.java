@@ -3,8 +3,6 @@ package net.nice.mapper;
 import net.nice.bean.Reader;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface ReaderMapper {
     /*注册*/
@@ -28,12 +26,4 @@ public interface ReaderMapper {
     Reader ShowUser(String reader_ID);
 
 
-
-    /*后台管理员部分*/
-    //读者姓名查询
-    List<Reader> readerList(String name);
-    //读者身份证查询
-    Reader readerId(String id);
-
-    List<Reader> getAllReader();
 }

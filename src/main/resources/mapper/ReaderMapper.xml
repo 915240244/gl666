@@ -4,16 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.nice.mapper.ReaderMapper">
 
+    <!--读者注册-->
     <insert id="createReader" parameterType="net.nice.bean.Reader">
         insert into reader_info (reader_ID, reader_Email, reader_Password) VALUES (
         #{reader_ID},#{reader_Email},#{reader_Password}
         )
     </insert>
 
+    <!--判断账号是否被注册-->
     <select id="checkExist" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
-        select * FROM reader_info WHERE reader_ID = #{reader_ID}
+        select reader_ID FROM reader_info WHERE reader_ID = #{reader_ID}
     </select>
 
+    <!--读者登录-->
     <select id="checkLogin" parameterType="net.nice.bean.Reader" resultType="net.nice.bean.Reader">
         SELECT * FROM reader_info WHERE reader_ID= #{reader_ID} AND reader_Password=#{reader_Password}
     </select>
@@ -24,6 +27,7 @@
         </update>
 
 
+    <!--修改读者个人信息-->
     <update id="updateReaderInfo" parameterType="java.lang.String">
         update reader_info SET
 
@@ -43,24 +47,9 @@
 
     </update>
 
+    <!--根据读者id查询用户信息-->
     <select id="ShowUser" parameterType="net.nice.bean.Reader" resultType="net.nice.bean.Reader">
         SELECT * FROM reader_info WHERE Reader_ID=#{reader_ID}
     </select>
 
-
-
-    <!--后台管理员部分-->
-
-    <!--读者姓名查询-->
-    <select id="readerList" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
-        select * from reader_info where reader_Name =#{name}
-    </select>
-    <!--读者身份证查询-->
-    <select id="readerId" parameterType="java.lang.String" resultType="net.nice.bean.Reader">
-        select * from reader_info where reader_ID =#{id}
-    </select>
-
-    <select id="getAllReader" resultType="net.nice.bean.Reader">
-        SELECT * FROM reader_info
-    </select>
 </mapper>

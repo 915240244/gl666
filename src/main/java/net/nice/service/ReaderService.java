@@ -2,8 +2,6 @@ package net.nice.service;
 
 import net.nice.bean.Reader;
 
-import java.util.List;
-
 public interface ReaderService {
     /*判断注册成功否*/
     boolean createReader(Reader reader);
@@ -27,11 +25,4 @@ public interface ReaderService {
 
 
 
-    /*后台管理员部分*/
-    //读者姓名查询
-    List<Reader> readerList(String name);
-    //读者身份证查询
-    Reader readerId(String id);
-
-    List<Reader> getAllReader();
 }

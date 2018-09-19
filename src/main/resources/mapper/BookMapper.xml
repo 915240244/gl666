@@ -4,25 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.nice.mapper.BookMapper">
 
-<!--    <select id="findCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM book_info
-    </select>-->
-
     <select id="allBook" resultType="net.nice.bean.Book">
         SELECT * FROM book_info
     </select>
 
-<!--    <select id="sCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM book_info WHERE (Title LIKE '%${sousuo}%') OR (Author LIKE '%${sousuo}%')
-    </select>-->
-
     <select id="sBook" resultType="net.nice.bean.Book">
         SELECT * FROM book_info WHERE (Title LIKE '%${sousuo}%') OR (Author LIKE '%${sousuo}%')
     </select>
-
-<!--    <select id="wxCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM book_info WHERE Type_Number='3'
-    </select>-->
 
     <select id="wxBook" resultType="net.nice.bean.Book">
         SELECT * FROM book_info WHERE Type_Number='3'
